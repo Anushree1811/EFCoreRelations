@@ -19,4 +19,22 @@ public class DemoDbContext:DbContext
     public DbSet<Weapon> Weapon { get; set; }
 
     public DbSet<Skill> Skill { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        // fluent api
+        modelBuilder.Entity<User>(entity => {
+
+            entity.Property(u => u.UserName)
+            .HasMaxLength(50)
+            .IsRequired();
+
+ 
+            
+        });
+
+        
+    }
 }
